@@ -1,23 +1,154 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">User Details</a>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">User Details</a>
+      <div class="d-flex">
+        <input class="form-control mr-sm-2" type="search" id="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0 ms-2" type="submit">Search</button>
+      </div>
+    </div>
   </nav>
 
   <div class="container mt-5">
-    <h2>User Details</h2>
-    <form action="/user/next" method="post">
-      <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" placeholder="Enter your name">
+  <h2>User Details</h2>
+  <form action="/user/next" method="post">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group mb-3">
+          <%= label_tag(:first_name, "First_name:") %>
+          <%= text_field_tag('user_details[first_name]', @user_data[:first_name], class: "form-control", placeholder: "Enter first name") %>
+        </div>
+
+        <!-- Other input fields for the first column -->
+        <div class="form-group mb-3">
+      <%= label_tag(:last_name, "Last_name:") %>
+      <%= text_field_tag('user_details[last_name]', @user_data[:last_name], class: "form-control", placeholder: "Enter last name") %>
       </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter your email">
+
+      <div class="form-group mb-3">
+        <%= label_tag(:email, "Email:") %>
+        <%= email_field_tag('user_details[email]', @user_data[:email], class: "form-control", placeholder: "Enter email") %>
       </div>
+
+      <div class="form-group mb-3">
+      <%= label_tag(:phone_number, "Phone Number:") %>
+      <%= number_field_tag('user_details[phone_number]', @user_data[:phone_number], class: "form-control", placeholder: "Enter phone number") %>
+      </div>
+
+        <div class="form-group mb-3">
+        <%= label_tag(:gender, "Gender:") %>
+        <%= select_tag 'user_details[gender]', options_for_select(['Male', 'Female', 'Others'], @user_data[:gender]), class: "form-control" %>
+        </div>
+
+
+        <div class="form-group mb-3">
+        <%= label_tag(:date_of_birth, "Date of Birth:") %>
+        <%= date_field_tag('user_details[date_of_birth]', @user_data[:date_of_birth], class: "form-control datepicker", placeholder: "Enter date of birth", date_format: "yyyy-mm-dd") %>
+        </div>
+
+
+        <div class="form-group mb-3">
+        <%= label_tag(:tenth_mark, "10th Mark (out of 500):") %>
+        <%= number_field_tag('user_details[tenth_mark]', @user_data[:tenth_mark], class: "form-control", placeholder: "Enter 10th mark", in: 0..500) %>
+        </div>
+
+        <div class="form-group mb-3">
+        <%= label_tag(:twelfth_mark, "12th Mark (out of 600):") %>
+        <%= number_field_tag('user_details[twelfth_mark]', @user_data[:twelfth_mark], class: "form-control", placeholder: "Enter 12th mark", in: 0..600) %>
+        </div>
+
+
+        <div class="form-group mb-3">
+        <%= label_tag(:school_name, "School Name:") %>
+        <%= text_field_tag('user_details[school_name]', @user_data[:school_name], class: "form-control", placeholder: "Enter school name") %>
+        </div>
+
+        <div class="form-group mb-3">
+        <%= label_tag(:college_degree, "College Degree:") %>
+        <%= text_field_tag('user_details[college_degree]', @user_data[:college_degree], class: "form-control", placeholder: "Enter college degree") %>
+        </div>
+
+        <div class="form-group mb-3">
+        <%= label_tag(:college_name, "College Name:") %>
+        <%= text_field_tag('user_details[college_name]', @user_data[:college_name], class: "form-control", placeholder: "Enter college name") %>
+        </div>
+
+        <div class="form-group mb-3">
+        <%= label_tag(:cgpa, "CGPA:") %>
+        <%= number_field_tag('user_details[cgpa]', @user_data[:cgpa], class: "form-control", placeholder: "Enter CGPA", step: "0.01") %>
+        </div>
+
+      </div>
+
+      
+        <div class="col-md-6">
+
+        <div class="form-group mb-3">
+        <%= label_tag(:father_name, "Father's Name:") %>
+        <%= text_field_tag('user_details[father_name]', @user_data[:father_name], class: "form-control", placeholder: "Enter father's name") %>
+        </div>
+
+        <div class="form-group mb-3">
+        <%= label_tag(:mother_name, "Mother's Name:") %>
+        <%= text_field_tag('user_details[mother_name]', @user_data[:mother_name], class: "form-control", placeholder: "Enter mother's name") %>
+        </div>
+
+        <div class="form-group mb-3">
+        <%= label_tag(:father_mobile_number, "Father's Mobile Number:") %>
+        <%= text_field_tag('user_details[father_mobile_number]', @user_data[:father_mobile_number], class: "form-control", placeholder: "Enter father's mobile number") %>
+        </div>
+
+        <div class="form-group mb-3">
+        <%= label_tag(:mother_mobile_number, "Mother's Mobile Number:") %>
+        <%= text_field_tag('user_details[mother_mobile_number]', @user_data[:mother_mobile_number], class: "form-control", placeholder: "Enter mother's mobile number") %>
+        </div>
+
+        <div class="form-group mb-3">
+        <%= label_tag(:height, "Height (in cm):") %>
+        <%= number_field_tag('user_details[height]', @user_data[:height], class: "form-control", placeholder: "Enter height") %>
+        </div>
+
+        <div class="form-group mb-3">
+        <%= label_tag(:weight, "Weight (in kg):") %>
+        <%= number_field_tag('user_details[weight]', @user_data[:weight], class: "form-control", placeholder: "Enter weight") %>
+        </div>
+
+        <div class="form-group mb-3">
+        <%= label_tag(:religion, "Religion:") %>
+        <%= text_field_tag('user_details[religion]', @user_data[:religion], class: "form-control", placeholder: "Enter religion") %>
+        </div>
+
+        <div class="form-group mb-3">
+        <%= label_tag(:community, "Community:") %>
+        <%= text_field_tag('user_details[community]', @user_data[:community], class: "form-control", placeholder: "Enter community") %>
+        </div>
+
+        <div class="form-group mb-3">
+        <%= label_tag(:marital_status, "Marital Status:") %>
+        <%= text_field_tag('user_details[marital_status]', @user_data[:marital_status], class: "form-control", placeholder: "Enter marital status") %>
+        </div>
+
+        <div class="form-group mb-3">
+        <%= label_tag(:facebook_account, "Facebook Account:") %>
+        <%= text_field_tag('user_details[facebook_account]', @user_data[:facebook_account], class: "form-control", placeholder: "Enter Facebook account") %>
+        </div>
+
+        <div class="form-group mb-3">
+        <%= label_tag(:instagram_account, "Instagram Account:") %>
+        <%= text_field_tag('user_details[instagram_account]', @user_data[:instagram_account], class: "form-control", placeholder: "Enter Instagram account") %>
+        </div>
+
+        <div class="form-group mb-3">
+        <%= label_tag(:twitter_account, "Twitter Account:") %>
+        <%= text_field_tag('user_details[twitter_account]', @user_data[:twitter_account], class: "form-control", placeholder: "Enter Twitter account") %>
+        </div>
+
+   </div>
+</div>
+
+      <div class="d-flex justify-content-end">
+      <a href="/user/cancel" class="btn btn-secondary me-2">Cancel</a>
       <button type="submit" class="btn btn-primary">Next</button>
-      <a href="/user/cancel" class="btn btn-secondary">Cancel</a>
+    </div>
+
     </form>
   </div>
